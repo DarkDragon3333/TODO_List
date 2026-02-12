@@ -72,9 +72,9 @@ public class ConnectToPG {
         printLogs();
 
         try (
-            Connection c1Connection = DriverManager.getConnection(default_url, user, password); //Передаём данные для создания соединения
-            Statement st = c1Connection.createStatement(); //Создаём соединение
-            ResultSet rs = st.executeQuery(createDB) //Создаём запрос
+            Connection c1Connection = DriverManager.getConnection(default_url, user, password);
+            Statement st = c1Connection.createStatement(); 
+            ResultSet rs = st.executeQuery(createDB) 
         ) {}
       } catch(ClassNotFoundException | SQLException e){
           System.err.println("ОШИБКА: " + e.getClass().getName());
@@ -86,9 +86,9 @@ public class ConnectToPG {
         printLogs();
 
         try (
-            Connection c2Connection = DriverManager.getConnection(main_url, user, password); //Передаём данные для создания соединения
-            Statement st = c2Connection.createStatement(); //Создаём соединение
-            ResultSet rs = st.executeQuery(createTables) //Создаём запрос
+            Connection c2Connection = DriverManager.getConnection(main_url, user, password); 
+            Statement st = c2Connection.createStatement(); 
+            ResultSet rs = st.executeQuery(createTables) 
         ) {}
       } catch(ClassNotFoundException | SQLException e){
           System.err.println("ОШИБКА: " + e.getClass().getName());
@@ -103,9 +103,9 @@ public class ConnectToPG {
         printLogs();
 
         try (
-            Connection c = DriverManager.getConnection(default_url, user, password); //Передаём данные для создания соединения
-            Statement st = c.createStatement(); //Создаём соединение
-            ResultSet rs = st.executeQuery(getData) //Создаём запрос
+            Connection c = DriverManager.getConnection(default_url, user, password);
+            Statement st = c.createStatement(); 
+            ResultSet rs = st.executeQuery(getData) 
         ) {
           while(rs.next()){ //Идём по каждой строке в таблице
             TaskObj taskObj = new TaskObj(
