@@ -15,50 +15,59 @@ import todo_list.Model.TaskCreators.FirstMenu.RefactorNameListCreator;
 
 public class App {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        boolean flag = true;
-
-        ConnectToPG connectToPG = new ConnectToPG();
-        connectToPG.connect();
-
-        ConsoleMenu consoleMenu = new ConsoleMenu();
-        consoleMenu.showMainMenu();
-        
-        while (flag){
-            String commandId = input.nextLine();
-            CommandParser commandParser = new CommandParser();
-            String command = commandParser.parseMainMenuComand(commandId);
-
-            AbstractTask creatorTask;
-            switch(command) {
-                case "Добавить список":
-                    creatorTask = new AddListCreator();
-                    creatorTask.createTaskObj();
-                    break;
-                case "Перейти в список":
-                    creatorTask = new GoToListCreator();
-                    creatorTask.createTaskObj();
-                    break;
-                case "Редактировать имя списка":
-                    creatorTask = new RefactorNameListCreator();
-                    creatorTask.createTaskObj();
-                    break;
-                case "Удалить список":
-                    creatorTask = new DeleteListCreator();
-                    creatorTask.createTaskObj();
-                    break;
-                case "Экспортировать списки в формате txt":
-                    creatorTask = new ExportListToTxtCreator();
-                    creatorTask.createTaskObj();
-                    break;
-                case "История выполнения задач":
-                    creatorTask = new CheckHistoryCreator();
-                    creatorTask.createTaskObj();
-                    break;                   
+        try (Scanner input = new Scanner(System.in)) {
+            boolean flag = true;
+            
+            ConsoleMenu consoleMenu = new ConsoleMenu();
+            consoleMenu.showMainMenu();
+            
+            System.out.println("Ваши списки дел: \n");
+            
+            ConnectToPG connectToPG = new ConnectToPG();
+            connectToPG.connect();
+            
+            while (flag){
+                System.out.print("Введите команду: ");
+                String commandId = input.nextLine();
+                CommandParser commandParser = new CommandParser();
+                String command = commandParser.parseMainMenuComand(commandId);
+                
+                AbstractTask creatorTask;
+                switch(command) {
+                    case "Добавить список" -> {
+                        creatorTask = new AddListCreator();
+                        creatorTask.complite();
+                    }
+                    case "Перейти в список" -> {
+                        creatorTask = new GoToListCreator();
+                        creatorTask.complite();
+                    }
+                    case "Редактировать имя списка" -> {
+                        creatorTask = new RefactorNameListCreator();
+                        creatorTask.complite();
+                    }
+                    case "Удалить список" -> {
+                        creatorTask = new DeleteListCreator();
+                        creatorTask.complite();
+                    }
+                    case "Экспортировать списки в формате txt" -> {
+                        creatorTask = new ExportListToTxtCreator();
+                        creatorTask.complite();
+                    }
+                    case "История выполнения задач" -> {
+                        creatorTask = new CheckHistoryCreator();
+                        creatorTask.complite();
+                    }
+                    case "Выход" -> {
+                        flag = false;
+                        break;
+                    }
+                }
+                                  
             }
-            flag = false;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-        input.close();
         
     }
 }

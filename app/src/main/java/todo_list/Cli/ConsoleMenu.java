@@ -3,7 +3,7 @@ package todo_list.Cli;
 public class ConsoleMenu {
     private final String[] commands_first_menu = {
         "Добавить список", "Перейти в список", "Редактировать имя списка", "Удалить список", 
-        "Экспортировать списки в формате txt", "История выполнения задач"
+        "Экспортировать списки в формате txt", "История выполнения задач", "Выход"
     };
 
     private final String[] commands_second_menu = {
