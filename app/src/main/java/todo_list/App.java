@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 import todo_list.Cli.CommandParser;
 import todo_list.Cli.ConsoleMenu;
-import todo_list.DataBased.ConnectToPG;
-import todo_list.Model.Acrions.AbstractTask;
-import todo_list.Model.TaskCreators.FirstMenu.AddListCreator;
-import todo_list.Model.TaskCreators.FirstMenu.CheckHistoryCreator;
-import todo_list.Model.TaskCreators.FirstMenu.DeleteListCreator;
-import todo_list.Model.TaskCreators.FirstMenu.ExportListToTxtCreator;
-import todo_list.Model.TaskCreators.FirstMenu.GoToListCreator;
-import todo_list.Model.TaskCreators.FirstMenu.RefactorNameListCreator;
+import todo_list.dataBased.service.ConnectToPG;
+import todo_list.dataBased.model.factoryTask.actions.AbstractTask;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.AddListCreator;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.CheckHistoryCreator;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.DeleteListCreator;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.ExportListToTxtCreator;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.GoToListCreator;
+import todo_list.dataBased.model.factoryTask.taskCreators.FirstMenu.RefactorNameListCreator;
 
 public class App {
     public static void main(String[] args) {
